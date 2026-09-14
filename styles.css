@@ -1,319 +1,475 @@
 :root {
-  --paper: #f3ead7;
-  --ink: #1b1712;
-  --muted: #5c5348;
-  --terracotta: #c45c26;
-  --forest: #215544;
-  --gold: #e2c57a;
-  --card: #fff8ea;
-  --line: rgba(27, 23, 18, 0.12);
-  --shadow: 0 18px 50px rgba(80, 42, 12, 0.12);
+  --paper: #efe9df;
+  --ink: #1c1a17;
+  --muted: #6b6459;
+  --line: rgba(28, 26, 23, 0.14);
+  --frame: #ffffff;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
+  padding: 0 1.5rem 4rem;
+  background: var(--paper);
   color: var(--ink);
-  background:
-    radial-gradient(1200px 500px at 10% -10%, #f7d7b0 0%, transparent 55%),
-    radial-gradient(900px 400px at 100% 0%, #cfe3d4 0%, transparent 50%),
-    var(--paper);
-  font-family: "IBM Plex Sans", sans-serif;
-  line-height: 1.55;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 }
 
-.grain {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  opacity: 0.18;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-  z-index: 0;
-}
-
-header,
-main,
-footer {
-  position: relative;
-  z-index: 1;
-  width: min(980px, calc(100% - 2.5rem));
+.site-head {
+  max-width: 720px;
   margin: 0 auto;
-}
-
-.hero {
-  padding: 4.5rem 0 2rem;
+  padding: 3rem 0 1.5rem;
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  letter-spacing: 0.14em;
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--forest);
-}
-
-h1,
-h2,
-h3,
-.bench h3 {
-  font-family: "Fraunces", serif;
-  font-optical-sizing: auto;
-  letter-spacing: -0.03em;
+  color: var(--muted);
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
-  line-height: 1.05;
+  margin: 0 0 0.6rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .lede {
-  max-width: 38rem;
-  font-size: 1.15rem;
+  margin: 0;
+  max-width: 42rem;
   color: var(--muted);
+  font-size: 1.05rem;
 }
 
-.hero-actions,
-.practice,
-.split,
-.cards {
+.controls {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
   display: flex;
-  gap: 1rem;
-}
-
-.hero-actions {
-  margin-top: 1.75rem;
+  align-items: center;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 0.75rem 1.15rem;
-  font: inherit;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn.primary {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.btn.ghost {
-  background: transparent;
-  border-color: var(--line);
-  color: var(--ink);
-}
-
-.panel {
-  background: rgba(255, 248, 234, 0.72);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow);
-}
-
-.steps {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.steps li + li {
-  margin-top: 0.85rem;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 1rem 1.05rem 1.15rem;
-}
-
-.kicker {
-  margin: 0 0 0.35rem;
-  color: var(--terracotta);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
-  text-transform: uppercase;
+.controls label {
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
-}
-
-.card h3,
-.split h3 {
-  margin: 0 0 0.4rem;
-}
-
-.card p,
-.split p,
-.hint,
-.practice p,
-footer p {
-  margin: 0;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
-.cheat {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.cheat th,
-.cheat td {
-  text-align: left;
-  padding: 0.7rem 0.2rem;
-  border-bottom: 1px solid var(--line);
-}
-
-kbd,
-code {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.86em;
-}
-
-kbd {
-  display: inline-block;
-  padding: 0.08rem 0.4rem;
-  border: 1px solid var(--line);
-  border-bottom-width: 2px;
-  border-radius: 6px;
-  background: #fff;
-}
-
-.hint {
-  margin-top: 1rem;
-}
-
-.practice {
-  align-items: stretch;
-  gap: 1.5rem;
-}
-
-.practice-copy,
-.bench {
-  flex: 1;
-}
-
-.prompts {
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.prompts button {
-  width: 100%;
-  text-align: left;
-  border: 1px dashed var(--forest);
-  background: #edf5ef;
-  color: var(--forest);
-  border-radius: 14px;
-  padding: 0.7rem 0.85rem;
+select {
   font: inherit;
-  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  min-width: 14rem;
+}
+
+.link-btn {
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   cursor: pointer;
 }
 
-.copied {
-  margin-top: 0.75rem;
-  color: var(--forest);
+.generate {
+  max-width: 720px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+#key-box {
+  display: none !important;
+}
+
+#key-box.is-open {
+  display: flex !important;
+}
+
+.text-btn[hidden] {
+  display: none !important;
+}
+
+.generate label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.generate input[type="text"],
+.generate input[type="password"] {
+  flex: 1;
+  min-width: 12rem;
+  font: inherit;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.generate button,
+.key-row button {
+  font: inherit;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.generate button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.generate .text-btn {
+  border: none;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0.45rem 0;
+}
+
+.status {
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.status.error {
+  color: #8a2f2f;
+}
+
+.key-box {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.key-box summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.key-box p {
+  margin: 0.7rem 0;
+}
+
+.key-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.key-row input {
+  flex: 1;
+  min-width: 12rem;
+  font: inherit;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.tabs {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
   font-weight: 600;
 }
 
-.bench {
-  background: linear-gradient(160deg, #f7c7a4 0%, #f3ead7 55%, #d7eadc 100%);
-  border: 1px solid rgba(196, 92, 38, 0.25);
-  border-radius: 24px;
-  padding: 1.4rem;
-  min-height: 240px;
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-.bench-label {
-  margin: 0 0 0.5rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--terracotta);
+/* ---- Learn tab: the "before → becomes" lesson format ---- */
+.lesson {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-.bench h3 {
-  margin: 0 0 0.4rem;
-  font-size: 2rem;
+.step-text {
+  margin: 1.6rem 0;
 }
 
-.bench p {
-  margin: 0 0 1.1rem;
+.step-text p {
+  margin: 0;
+  font-size: 1.05rem;
   color: var(--ink);
 }
 
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+.step-text .step-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.bad,
-.good {
-  padding: 0.8rem 0.9rem;
-  border-radius: 14px;
+.panel {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.bad {
-  background: #f8e2d8;
-  color: #8a3318;
+.panel svg {
+  display: block;
+  width: 100%;
 }
 
-.good {
-  background: #dceee4;
-  color: #215544;
-}
-
-.checklist {
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-}
-
-.checklist li {
+.becomes {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.7rem;
-  align-items: flex-start;
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--line);
+  margin: 1.1rem 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.checklist input {
-  margin-top: 0.3rem;
+.becomes::before,
+.becomes::after {
+  content: "";
+  height: 1px;
+  width: 44px;
+  background: var(--line);
 }
 
-footer {
-  padding: 1rem 0 3rem;
+.takeaway {
+  margin: 2rem 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
-@media (max-width: 760px) {
-  .practice,
-  .split {
-    display: grid;
-    grid-template-columns: 1fr;
+.lesson-empty {
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.variations {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.variation-btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.variation-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.layout {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.poster-wrap {
+  margin: 0;
+}
+
+/* The poster itself: a 3:4 colored field, like Carreras. */
+.poster {
+  position: relative;
+  width: min(420px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(40, 30, 12, 0.18);
+}
+
+.art,
+.art svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Title + description sit on top of the art, top-left, like the originals. */
+.poster-text {
+  position: absolute;
+  top: 7%;
+  left: 8%;
+  right: 8%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.poster-text h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.poster-text p {
+  margin: 0;
+  max-width: 88%;
+  font-size: 0.6rem;
+  line-height: 1.45;
+  opacity: 0.72;
+}
+
+.caption {
+  margin: 1rem auto 0;
+  width: min(420px, 100%);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.note-line {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+.note-label {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.philosophy {
+  margin: 1.1rem auto 0;
+  width: min(420px, 100%);
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ink);
+  background: #fff;
+  border-radius: 4px;
+}
+
+.philosophy-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.philosophy p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.spec-wrap {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem 1.1rem;
+}
+
+.spec-label,
+.spec-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.spec-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.spec-note {
+  margin-top: 0.6rem;
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #24303a;
+}
+
+@media (min-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
   }
 }

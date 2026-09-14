@@ -3,201 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cursor Practice Bench</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <title>Philographics — the shape of an idea</title>
+    <link rel="stylesheet" href="styles.css?v=23" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
-
-    <header class="hero">
-      <p class="eyebrow">learn-vibe-build · lesson 01</p>
-      <h1>You already started.<br />This site is the gym.</h1>
+    <header class="site-head">
+      <p class="eyebrow">learn-vibe-build · phase 2 · the art director</p>
+      <h1>Philosophy, Geometry, and Meaning</h1>
       <p class="lede">
-        Cursor is a code editor with an AI teammate. You describe what you want
-        in chat. It edits files. You review, then ask for the next change.
-        That loop is the whole skill.
+        A complex idea, reduced to one geometric image. Hand-authored posters
+        live in the dropdown. Type any word below and the AI writes the same
+        JSON spec our renderer already knows how to draw.
       </p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#practice">Jump to the practice bench</a>
-        <a class="btn ghost" href="#loop">See the loop</a>
-      </div>
     </header>
 
-    <main>
-      <section id="loop" class="panel">
-        <h2>The loop you are in right now</h2>
-        <ol class="steps">
-          <li>
-            <strong>Ask in plain English.</strong>
-            You just did this: “make a simple website to help me learn Cursor.”
-          </li>
-          <li>
-            <strong>Watch the files change.</strong>
-            Agent creates and edits <code>index.html</code>,
-            <code>styles.css</code>, and <code>script.js</code>.
-          </li>
-          <li>
-            <strong>Open the site. React.</strong>
-            Like it? Keep going. Hate a color? Tell chat. That is the workflow.
-          </li>
-        </ol>
-      </section>
+    <div class="controls">
+      <label for="concept">Concept</label>
+      <select id="concept"></select>
+      <button type="button" id="toggle-spec" class="link-btn">
+        Show / hide the spec
+      </button>
+    </div>
 
-      <section class="panel">
-        <h2>Four modes, one job</h2>
-        <div class="cards">
-          <article class="card">
-            <p class="kicker">Agent</p>
-            <h3>Build and change files</h3>
-            <p>
-              Default mode for making things. Use it when you want code written,
-              bugs fixed, or a feature added.
-            </p>
-          </article>
-          <article class="card">
-            <p class="kicker">Ask</p>
-            <h3>Read without editing</h3>
-            <p>
-              Questions only. “What does this file do?” Switch here when you
-              want an explanation, not a rewrite.
-            </p>
-          </article>
-          <article class="card">
-            <p class="kicker">Plan</p>
-            <h3>Think before building</h3>
-            <p>
-              For bigger ideas. Agent maps the approach, you approve, then it
-              builds. Cycle modes with <kbd>Shift</kbd> + <kbd>Tab</kbd>.
-            </p>
-          </article>
-          <article class="card">
-            <p class="kicker">Inline</p>
-            <h3>Tiny edits in place</h3>
-            <p>
-              Select some code, press <kbd>Cmd</kbd> + <kbd>K</kbd>, and say
-              “make this heading smaller.” Fastest for one-spot changes.
-            </p>
-          </article>
-        </div>
-      </section>
+    <form class="generate" id="generate-form">
+      <label for="word">Any word</label>
+      <input
+        id="word"
+        name="word"
+        type="text"
+        placeholder="e.g. justice, nostalgia, entropy"
+        autocomplete="off"
+      />
+      <button type="submit" id="generate-btn">Generate</button>
+      <button type="button" id="change-key" class="text-btn">Change key</button>
+    </form>
 
-      <section class="panel">
-        <h2>Shortcuts worth muscle memory</h2>
-        <table class="cheat">
-          <thead>
-            <tr>
-              <th>Do this</th>
-              <th>Mac</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Open Agent chat</td>
-              <td><kbd>Cmd</kbd> + <kbd>I</kbd></td>
-            </tr>
-            <tr>
-              <td>Inline edit selected code</td>
-              <td><kbd>Cmd</kbd> + <kbd>K</kbd></td>
-            </tr>
-            <tr>
-              <td>Accept a Tab suggestion</td>
-              <td><kbd>Tab</kbd></td>
-            </tr>
-            <tr>
-              <td>Add selected code to chat</td>
-              <td><kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></td>
-            </tr>
-            <tr>
-              <td>Command palette</td>
-              <td><kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd></td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="hint">
-          On Windows or Linux, use <kbd>Ctrl</kbd> instead of
-          <kbd>Cmd</kbd>. Type <code>@</code> in chat to point Agent at a
-          specific file.
-        </p>
-      </section>
+    <div class="generate" id="key-box" hidden>
+      <label for="api-key">Paste your API key here</label>
+      <input
+        id="api-key"
+        type="password"
+        placeholder="sk-…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button type="button" id="save-key">Save</button>
+    </div>
+    <p class="status" id="status" hidden></p>
 
-      <section id="practice" class="panel practice">
-        <div class="practice-copy">
-          <h2>Practice bench</h2>
-          <p>
-            This card is meant to be rewritten. Open chat and try one of the
-            prompts below. Then refresh this page.
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab active" id="tab-poster">Poster</button>
+      <button type="button" class="tab" id="tab-learn">Learn</button>
+    </div>
+
+    <div id="view-poster">
+      <div id="variations" class="variations" hidden></div>
+
+      <main class="layout">
+        <figure class="poster-wrap">
+          <div class="poster" id="poster">
+            <div class="art" id="art"></div>
+            <div class="poster-text">
+              <h2 id="p-title"></h2>
+              <p id="p-desc"></p>
+            </div>
+          </div>
+          <figcaption class="caption">
+            <p class="note-line">
+              <span class="note-label">Shape</span>
+              <span id="rationale"></span>
+            </p>
+            <p class="note-line">
+              <span class="note-label">Colour</span>
+              <span id="color-note"></span>
+            </p>
+          </figcaption>
+          <div class="philosophy" id="philosophy" hidden>
+            <p class="philosophy-label">The thinkers behind this reading</p>
+            <p id="philosophy-text"></p>
+          </div>
+        </figure>
+
+        <aside id="spec-wrap" class="spec-wrap" hidden>
+          <p class="spec-label">The spec that drew this poster</p>
+          <pre id="spec"></pre>
+          <p class="spec-note">
+            This is the contract. Our code reads it today; the AI will write it
+            tomorrow. Nothing else changes.
           </p>
-          <ul class="prompts" id="prompts">
-            <li>
-              <button type="button" data-prompt="Change the practice card color to deep navy and make the title say Sasha's bench.">
-                Copy: restyle the card
-              </button>
-            </li>
-            <li>
-              <button type="button" data-prompt="Add a second button on the practice card that resets the click count to zero.">
-                Copy: add a reset button
-              </button>
-            </li>
-            <li>
-              <button type="button" data-prompt="Make the whole site dark mode, but keep the cream practice card as a spotlight.">
-                Copy: try dark mode
-              </button>
-            </li>
-          </ul>
-          <p class="copied" id="copied" hidden>Prompt copied. Paste it into chat.</p>
-        </div>
+        </aside>
+      </main>
+    </div>
 
-        <article class="bench" id="bench">
-          <p class="bench-label">editable target</p>
-          <h3 id="bench-title">Practice card</h3>
-          <p>Click the button. Then ask Cursor to change how this feels.</p>
-          <button type="button" id="clicker" class="btn primary">
-            Clicks: <span id="count">0</span>
-          </button>
-        </article>
-      </section>
+    <section id="view-learn" class="lesson" hidden></section>
 
-      <section class="panel">
-        <h2>How to talk to Agent</h2>
-        <div class="split">
-          <div>
-            <h3>Vague (harder for Agent)</h3>
-            <p class="bad">Make it better.</p>
-            <p class="bad">Fix the website.</p>
-          </div>
-          <div>
-            <h3>Specific (easier to ship)</h3>
-            <p class="good">
-              In <code>styles.css</code>, change the background to
-              <code>#0f1c18</code> and make headlines cream.
-            </p>
-            <p class="good">
-              Add a footer with the text “Built in Cursor by Sasha.”
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel checklist-panel">
-        <h2>Try these next</h2>
-        <p>Check them off as you go. They save in this browser.</p>
-        <ul class="checklist" id="checklist"></ul>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        Open this folder in Cursor, keep this chat going, and keep asking for
-        the next small change. That is how you learn it.
-      </p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="prompt.js?v=23"></script>
+    <script src="script.js?v=23"></script>
   </body>
 </html>

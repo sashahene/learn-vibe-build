@@ -1,3 +1,6 @@
 .DS_Store
 .vscode/
 .cursor/
+.tmp_pages/
+.env
+.env.*
